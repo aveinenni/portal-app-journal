@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>pg游戏 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f9fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            color: #1c2e3f;
+            line-height: 1.6;
+            padding: 0 1rem;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0 3.5rem;
+        }
+
+        /* hero 横幅 */
+        .hero {
+            background: linear-gradient(145deg, #eaf3f2 0%, #d4e7e7 100%);
+            border-radius: 2rem;
+            padding: 3rem 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 24px rgba(0, 80, 80, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(53, 153, 153, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0c3c3c;
+            margin-bottom: 0.75rem;
+            max-width: 680px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #2b5454;
+            max-width: 640px;
+            margin-top: 0.2rem;
+            font-weight: 380;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #2b7a7a;
+            color: #f1faf9;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            margin-top: 1.2rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* 网格卡片区 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 60, 60, 0.04), 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #e4eff0;
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 24px rgba(0, 90, 90, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .card .icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+            display: block;
+            color: #1f7a7a;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #134343;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid #359999;
+            padding-left: 0.8rem;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: #2f4a4a;
+            margin-bottom: 0.2rem;
+        }
+
+        .card .meta-tag {
+            margin-top: 1rem;
+            display: inline-block;
+            background: #e0f0ef;
+            color: #175e5e;
+            font-size: 0.78rem;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+        }
+
+        /* 三段自然介绍 (杂志风格) */
+        .feature-article {
+            margin: 3.5rem 0 2.8rem;
+            background: #f3faf9;
+            padding: 2.5rem 2.2rem;
+            border-radius: 2rem;
+        }
+
+        .feature-article h2 {
+            font-weight: 450;
+            font-size: 2rem;
+            color: #083636;
+            letter-spacing: -0.3px;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .feature-article h2 small {
+            font-size: 0.9rem;
+            font-weight: 380;
+            color: #3f7474;
+            background: #d6edeb;
+            padding: 0.1rem 0.9rem;
+            border-radius: 30px;
+        }
+
+        .three-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .three-sections section {
+            border-bottom: 1px dashed #c2dbdb;
+            padding-bottom: 1.6rem;
+        }
+
+        .three-sections section:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .three-sections section .num {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: #2b7a7a;
+            color: #f0fcfb;
+            width: 28px;
+            height: 28px;
+            border-radius: 30px;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 0.6rem;
+        }
+
+        .three-sections section h4 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0d4545;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .three-sections section p {
+            font-size: 1rem;
+            color: #2f4f4f;
+            margin-top: 0.3rem;
+            max-width: 90%;
+        }
+
+        /* FAQ摘要 */
+        .faq-digest {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem 2.2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #daeceb;
+        }
+
+        .faq-digest h3 {
+            font-weight: 450;
+            font-size: 1.6rem;
+            color: #083636;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0eeee;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: 0;
+        }
+
+        .faq-item .question {
+            font-weight: 500;
+            color: #1b5c5c;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-item .answer {
+            color: #3c5a5a;
+            font-size: 0.95rem;
+        }
+
+        /* 页尾访问提示 */
+        .footer-hint {
+            background: #e4f1f0;
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            border: 1px solid #bcd9d7;
+        }
+
+        .footer-hint p {
+            font-size: 1.05rem;
+            color: #1b4b4b;
+            max-width: 600px;
+            margin: 0 auto 0.8rem;
+        }
+
+        .footer-hint .inline-link {
+            font-weight: 500;
+            background: #f6fffe;
+            padding: 0.3rem 0.8rem 0.3rem 0.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid #9cc7c5;
+            transition: background 0.2s;
+        }
+
+        .footer-hint .inline-link a {
+            color: #0b5555;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-hint .inline-link a:hover {
+            text-decoration: underline;
+            color: #053f3f;
+        }
+
+        .credit-note {
+            margin-top: 1.8rem;
+            font-size: 0.85rem;
+            color: #4b6f6f;
+            opacity: 0.75;
+        }
+
+        /* 移动端调整 */
+        @media (max-width: 680px) {
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .feature-article {
+                padding: 1.8rem 1.2rem;
+            }
+            .three-sections section p {
+                max-width: 100%;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+            .faq-digest {
+                padding: 1.5rem;
+            }
+            .footer-hint {
+                padding: 1.8rem 1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .feature-article h2 {
+                font-size: 1.5rem;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- hero 横幅 -->
+    <div class="hero">
+        <h1>关于 pg游戏 · 一个纯粹的信息站点</h1>
+        <p>没有浮夸的广告，只有对游戏本身平实的关注与梳理。这里尝试为爱好者提供一条清晰的路径。</p>
+        <span class="tagline">站点笔记 · 2025</span>
+    </div>
+
+    <!-- 网格卡片：介绍与特点 -->
+    <div class="grid-cards">
+        <div class="card">
+            <span class="icon">🧭</span>
+            <h3>站点由来</h3>
+            <p>hot-pggame.com 最初只是一份私人整理的索引，后来逐渐变为一个开放的小型档案库。我们筛选并收录那些值得了解的 pg游戏 作品，不追逐热度，只在意内容本身是否扎实。</p>
+            <span class="meta-tag">专注内容 · 克制更新</span>
+        </div>
+        <div class="card">
+            <span class="icon">🔍</span>
+            <h3>可信说明</h3>
+            <p>并非所有信息都来自官方，但每一条收录都经过交叉比对。如果你发现缺漏或过时内容，可以随时反馈——这里始终处于修订状态。</p>
+            <span class="meta-tag">持续勘误</span>
+        </div>
+        <div class="card">
+            <span class="icon">🕹️</span>
+            <h3>游戏场景</h3>
+            <p>从休闲一刻到深度钻研，pg游戏 覆盖了多种类型的体验。我们不定义什么是“最好”，但尽量让每种偏好的玩家都能找到适合自己的那一款。</p>
+            <span class="meta-tag">类型多元</span>
+        </div>
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="feature-article">
+        <h2>杂志笔记 <small>三次侧写</small></h2>
+        <div class="three-sections">
+            <section>
+                <h4><span class="num">1</span> 为什么会有这个站点？</h4>
+                <p>大概在两年前，我注意到身边不少朋友在寻找 pg 游戏 时，总是被铺天盖地的推广信息淹没。论坛里零散的推荐帖很快沉底，视频下的评论区也真假难辨。于是我开始用最笨的方法：把那些被反复提及、口碑稳定的作品记录下来，附上来源和版本说明。后来这个文档越写越长，索性就搬到了线上。</p>
+            </section>
+            <section>
+                <h4><span class="num">2</span> 关于可信度的坚持</h4>
+                <p>不夸大、不虚构——听起来像是默认值，但做起来并不简单。对于每一款列入站内的 <a href="https://hot-pggame.com" style="color: #166a6a; text-decoration: underline; text-underline-offset: 3px;">pg游戏</a>，我们会尽力标注其开发商、首次发布年份以及最近一次更新。如果某条信息存疑，页面中会有明确提示。我们不是权威媒体，只是一个负责任的记录者。</p>
+            </section>
+            <section>
+                <h4><span class="num">3</span> 未来会变成什么样？</h4>
+                <p>保持小规模。不会加入用户评论系统，也不打算做排行。可能会增加一些更细致的筛选标签，比如“单人体验出色”或“美术风格独特”。一切改变都基于一个原则：不破坏浏览的安静感。如果你愿意，可以偶尔回来看一眼，也许会有新的发现。</p>
+            </section>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 (非完整列表) -->
+    <div class="faq-digest">
+        <h3>❓ 常见疑问摘要</h3>
+        <div class="faq-item">
+            <div class="question">Q: 站点收录标准是什么？</div>
+            <div class="answer">A: 至少拥有稳定版本、有可追溯的开发或发行信息，并且整体评价偏向正面。暂时不收录未完成或长期停更的作品。</div>
+        </div>
+        <div class="faq-item">
+            <div class="question">Q: 是否包含商业推广？</div>
+            <div class="answer">A: 没有。页面内没有任何广告位或赞助内容。唯一的链接是自然出现的站点主页引用。</div>
+        </div>
+        <div class="faq-item">
+            <div class="question">Q: 信息多久更新一次？</div>
+            <div class="answer">A: 大约每月一次。如果遇到重要版本变更或站点下线，会临时补充记录。</div>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示，链接自然嵌入句子 -->
+    <div class="footer-hint">
+        <p>如果你对收录内容感兴趣，可以直接浏览 <span class="inline-link"><a href="https://hot-pggame.com">pg游戏</a></span> 的主站。所有页面均为静态，加载迅速，没有弹窗。</p>
+        <p style="margin-top: 0.3rem; font-size: 0.9rem;">我们相信安静的信息自有力量。</p>
+        <div class="credit-note">hot-pggame.com · 一个非官方信息整理站点</div>
+    </div>
+</div>
+</body>
+</html>
